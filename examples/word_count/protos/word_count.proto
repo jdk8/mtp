@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message WordCountPair {
+  bytes word = 1;
+  int32 count = 2;
+}
+
+message WordCountPairs {
+  repeated WordCountPair word_count_pairs = 1;
+}

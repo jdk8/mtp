@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option cc_generic_services = true;
+
+message ActorMessage {
+  bytes callee_addr = 1;
+  int32 type = 2;
+  bytes method = 3;
+  bytes message = 4;
+}
+
+message SerializableMail {
+  bool is_server = 1;
+  bytes ip = 2;
+  int32 port = 3;
+  bytes actor_id = 4;
+  bytes worker_id = 5;
+  int32 conn_fd = 6;
+}
+
+message ServiceAddr {
+  bytes service_name = 1;
+  repeated bytes service_mails = 2;
+}
+
+message InitClient {
+  int32 conn_fd = 1;
+  bytes client_service = 2;
+}
+
+service ActorService {
+  rpc SendActorMessage (ActorMessage) returns (ActorMessage);
+}
+
+service ActorClientService {
+  rpc SendActorMessage (ActorMessage) returns (ActorMessage);
+}
+

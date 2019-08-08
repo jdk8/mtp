@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message RpcPackage {
+  int32 index = 1;
+  bytes data = 2;
+  uint32 callback_id = 3;
+}
